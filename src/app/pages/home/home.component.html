@@ -1,0 +1,41 @@
+<div class="container px-5 py-5">
+  <div class="text-center">
+    <h1 class="display-2 pv-3">Find your dream job now</h1>
+    <div class="input-group mb-3 my-3">
+      <form class="d-flex flex-row input-group" [formGroup]="searchForm">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter skills / titles..."
+          aria-describedby="button-addon2"
+          formControlName="search"
+        />
+        <button
+          class="btn btn-outline-secondary btn-lg"
+          type="button"
+          id="button-addon2"
+          (click)="handleSearch()"
+        >
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+  <div *ngFor="let job of jobs" class="card d-flex flex-row m-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ job["title"] }}</h5>
+      <p class="card-text">Job Description : {{ job["description"] }}</p>
+      <p class="card-text">Skills requried : {{ job["skill"] }}</p>
+      <p class="card-text">
+        Experience : {{ job["minExperience"] }} -
+        {{ job["maxExperience"] }} years
+      </p>
+      <button class="btn btn-success my-auto mx-1" (click)="handleApplyJob()">
+        Apply
+      </button>
+      <button class="btn btn-warning my-auto mx-1" (click)="handleSaveJob()">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
